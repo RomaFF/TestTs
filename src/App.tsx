@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import {useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
+import { fetchData } from './actions/actions'
+import { CardList } from './components/CardList/CardList';
+import { CardInfo } from './components/CardInfo/CardInfo';
 
 function App() {
+  const data = useSelector(state => state.defaultData.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {data ? <Routes>
+        <Route path="/" element={<CardList/>}/>
+        <Route path="/:asin" element={<CardInfo/>}/>
+      </Routes> : <div>Загрузка...</div>}
+      
+      {/*{data ? <CardList/> : <div>Загрузка...</div>}*/}
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.cardList {
+    &__border {
+        width: 1200px;
+        margin: 25px auto;
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
+}

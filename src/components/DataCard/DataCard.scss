@@ -1,0 +1,13 @@
+.card {
+    &__wrapper {
+/*        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        padding: 5px;*/
+        margin-bottom: 15px;
+    }
+    &__img {    
+        height: 90px;
+        object-fit: contain;
+    }
+}
