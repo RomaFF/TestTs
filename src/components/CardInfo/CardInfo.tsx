@@ -1,5 +1,6 @@
-import { Link as RouterLink, useHistory, useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../store/store'
 
 import { Button } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -11,9 +12,8 @@ import Link from '@mui/material/Link';
 import { Theme } from '../../colors/Colors';
 
 export const CardInfo = () => {
-    const data = useSelector(state => state.defaultData.data);
+    const data = useAppSelector((state) => state.defaultData.data);
     const { asin } = useParams()
-    console.log(asin);
 
     const product = data.filter(item => item.asin === asin)
 
@@ -39,7 +39,7 @@ export const CardInfo = () => {
                     marginTop={2}
                     variant="h5" 
                     component="div"
-                    color={Theme.palette.primary.price}
+                    /*color={Theme.palette.primary.price}*/
                 >
                     {product[0].price} $
                 </Typography>

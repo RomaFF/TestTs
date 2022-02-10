@@ -1,11 +1,11 @@
 interface stateIn {
-    data: { img: string, asin: string, price: string, bsr_category: string, link: string }[];
+    data: { img: string, asin: string, price: string, name: string, bsr_category: string, link: string }[];
     dataLoadingStatus: string;
 }
 
 interface actionIn {
     type: string;
-    payload: string;
+    payload: /*string | { img: string, asin: string, price: string, bsr_category: string, link: string }[]*/any;
 }
 
 const initialState: stateIn = {
@@ -13,7 +13,7 @@ const initialState: stateIn = {
     dataLoadingStatus: 'fetched'
 }
 
-const defaultData = (state = initialState, action: actionIn) => {
+const defaultData = (state = initialState, action: actionIn): stateIn => {
     switch (action.type) {
         case 'DATA_FETCHING':
             return {

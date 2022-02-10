@@ -1,5 +1,5 @@
 interface stateIn {
-    filteredData: { img: string, asin: string, price: string, bsr_category: string, link: string }[],
+    filteredData: { img: string, asin: string, name: string, price: string, bsr_category: string, link: string }[],
     filterValue: string,
     speciesList: string[],
     selectedProduct: string
@@ -7,7 +7,7 @@ interface stateIn {
 
 interface actionIn {
     type: string;
-    payload: string;
+    payload: any;
 }
 
 const initialState: stateIn = {

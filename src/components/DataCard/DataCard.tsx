@@ -11,7 +11,16 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { Theme } from '../../colors/Colors';
 
-export const DataCard = ({img ,asin, price, bsr_category, link, name}) => {
+interface dataProps {
+    img: string;
+    asin: string;
+    price: string;
+    bsr_category: string;
+    link: string;
+    name: string;
+}
+
+export const DataCard = ({img ,asin, price, bsr_category, link, name}: dataProps) => {
 
     return (
         <Card sx={{ width: 285 }} className="card__wrapper">
@@ -35,7 +44,7 @@ export const DataCard = ({img ,asin, price, bsr_category, link, name}) => {
                     marginTop={2}
                     variant="h5" 
                     component="div"
-                    color={Theme.palette.primary.price}
+                    /*color={Theme.primary.price}*/
                 >
                     {price} $
                 </Typography>
