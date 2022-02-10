@@ -1,3 +1,4 @@
+import { url } from 'inspector';
 import { Dispatch } from 'redux'
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
@@ -7,6 +8,12 @@ interface arrItem {
     price: string; 
     bsr_category: string; 
     link: string; 
+    name: string;
+}
+
+interface dataInt {
+    products: arrItem[]
+    id: string
 }
 
 /*export const fetchData = () => (dispatch: Dispatch) => {
@@ -25,13 +32,15 @@ export function* watchFetch() {
   yield takeEvery('DATA_FETCHED', fetchData);
 }
 
+const resData = () => {
+    return fetch(`https://61fbc6493f1e34001792c5dd.mockapi.io/data/test`)
+        .then(res => res.json())
+}
+
 function* fetchData() {
     try {
         yield put(dataFetching());
-        const data = yield call(() => {
-            return fetch(`https://61fbc6493f1e34001792c5dd.mockapi.io/data/test`)
-                .then(res => res.json())
-        });
+        const data: dataInt[] = yield call(resData);
         yield put(dataFetched(data[0].products));
         const select: string[] = ['All products', ...new Set<string>(data[0].products.map((item: arrItem) => item.bsr_category))]
         yield put(speciesSelect(select));
