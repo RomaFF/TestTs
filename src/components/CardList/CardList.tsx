@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Routes, Route, Outlet, Link, useParams } from 'react-router-dom';
 
-import { fetchData } from '../../actions/actions'
 import { useAppDispatch, useAppSelector } from '../../store/store'
 import { dataFetched, filteredInputValue, dataFiltered, changeProducts} from '../../actions/actions'
 

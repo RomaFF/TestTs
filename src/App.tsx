@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './store/store'
 
 import './App.scss';
-import { fetchData } from './actions/actions'
+import { watchFetch } from './actions/actions'
 import { CardList } from './components/CardList/CardList';
 import { CardInfo } from './components/CardInfo/CardInfo';
 
@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchData())
+    dispatch(watchFetch())
   }, [])
 
   return (
