@@ -38,7 +38,8 @@ function* fetchUser() {
         yield console.log(data);
         
         yield put({type: 'DATA_FETCHED', payload: data.products});
-        const select: string[] = ['All products', ...new Set<string>(data.products.map((item: arrItem) => item.bsr_category))]
+        const select: string[] = ['All products', ...new Set<string>(data.products.map<arrItem[]>((item: arrItem) => item.bsr_category))]
+        
         yield put({ type: 'SPECIES_LIST', payload: select });
    } catch (e: any) {
         yield put({type: "USER_FETCH_FAILED", message: e.message});
