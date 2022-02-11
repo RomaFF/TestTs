@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './store/store'
 
 import './App.scss';
-import { watchFetch } from './actions/actions'
 import { CardList } from './components/CardList/CardList';
 import { CardInfo } from './components/CardInfo/CardInfo';
 
@@ -13,8 +12,8 @@ function App() {
   const data = useAppSelector(state => state.defaultData.data);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(watchFetch())
+  useEffect(() => {    
+    dispatch({type: 'USER_FETCH_REQUESTED'})
   }, [])
 
   return (
